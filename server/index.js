@@ -2,12 +2,18 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 
-import goalRoutes from "./routes/goalRoutes.js"
+import goalRoutes from "./routes/goalRoutes.js";
+import errorHandler from "./middleware/errorMiddleware.js";
 
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 8000;
 
 const app = express();
 
-app.use('/api/goals',goalRoutes)
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use("/api/goals", goalRoutes);
+
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

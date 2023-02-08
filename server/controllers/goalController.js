@@ -3,7 +3,11 @@ export const getGoals = (req, res) => {
 };
 
 export const setGoals = (req, res) => {
-	res.status(200).json({ message: "set" });
+    if(!req.body.text){
+        res.status(400)
+        throw new Error('Please add a text field')
+    }
+	res.status(200).json({ message: "Set Goals" });
 };
 
 export const updateGoals = (req, res) => {
