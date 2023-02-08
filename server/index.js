@@ -1,11 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
+import colors from "colors";
 
+import connectDB from "./config/db.js";
 import goalRoutes from "./routes/goalRoutes.js";
 import errorHandler from "./middleware/errorMiddleware.js";
 
 const port = process.env.PORT || 8000;
+
+connectDB();
 
 const app = express();
 
@@ -16,4 +20,4 @@ app.use("/api/goals", goalRoutes);
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
+app.listen(port, () => console.log(`Server started on port ${port}`.green));
