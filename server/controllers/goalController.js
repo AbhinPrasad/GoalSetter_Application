@@ -1,4 +1,5 @@
 import asyncHandler from "express-async-handler";
+import Goal from "../models/goalModel";
 
 export const getGoals = asyncHandler(async (req, res) => {
 	res.status(200).json({ message: "get" });
