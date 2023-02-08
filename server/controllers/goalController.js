@@ -20,12 +20,9 @@ export const setGoals = asyncHandler(async (req, res) => {
 });
 
 export const updateGoals = asyncHandler(async (req, res) => {
-	console.log(req.params.id);
-	console.log("first");
 	const goal = await Goal.findById(req.params.id);
-	console.log(goal);
+	
 	if (!goal) {
-		console.log("not goal");
 		res.status(400);
 		throw new Error("Goal not found");
 	}
@@ -33,7 +30,7 @@ export const updateGoals = asyncHandler(async (req, res) => {
 	const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
 		new: true
 	});
-	console.log(updatedGoal, "updatedgoal");
+
 	res.status(200).json(updatedGoal);
 });
 
