@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import colors from "colors";
+import cors from "cors";
 
 import connectDB from "./config/db.js";
 import goalRoutes from "./routes/goalRoutes.js";
@@ -16,6 +17,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors())
 
 app.use("/api/goals", goalRoutes);
 app.use("/api/users", userRoutes);
