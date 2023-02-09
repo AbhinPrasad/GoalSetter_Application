@@ -5,9 +5,10 @@ import {
 	loginUser,
 	getUserData
 } from "../controllers/userController.js";
+import protect from "../middleware/authMiddleware.js";
 
 router.post("/", registerUser);
 router.post("/login", loginUser);
-router.get("/me", getUserData);
+router.get("/me",protect, getUserData);
 
 export default router;
