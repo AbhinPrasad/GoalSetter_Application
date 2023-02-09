@@ -17,7 +17,8 @@ const userSchema = mongoose.Schema(
 		},
 		phone: {
 			type: Number,
-			required: [true, "Please add a phone number"]
+			required: [true, "Please add a phone number"],
+			unique: true
 		}
 	},
 	{ timestamps: true }
