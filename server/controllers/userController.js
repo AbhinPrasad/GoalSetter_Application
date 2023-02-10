@@ -48,6 +48,11 @@ export const registerUser = asyncHandler(async (req, res) => {
 export const loginUser = asyncHandler(async (req, res) => {
 	const { email, password } = req.body;
 
+	if (!email || !password) {
+		res.status(400);
+		throw new Error("Add all fields");
+	}
+
 	const user = await User.findOne({ email });
 
 	if (user) {

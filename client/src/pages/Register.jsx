@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
