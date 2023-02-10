@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
@@ -26,7 +26,14 @@ const Register = () => {
 
 	useEffect(() => {
 		if (isError) {
-			toast.error(message);
+			toast(message, {
+				icon: "❌",
+				style: {
+					borderRadius: "10px",
+					background: "#333",
+					color: "#fff"
+				}
+			});
 		}
 
 		if (isSuccess || user) {
